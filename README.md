@@ -1,10 +1,16 @@
 # unityleveltiles
-Unity tile-based level generator
+Unity tile-based level generator.
+
+This will help you creating tile-based levels simply by creating a textfile containing the structure of your tiles.
+
+An alias is a 2-character string that gets mapped to a prefab. Right now it has to be exactly 2 characters long, otherwise it wouldn't work.
 
 Just apply the TilesCreator.cs script to any Gameobject in your scene.
 Then just add all your floor tiles to the tiles section and provide aliases for them in the aliases section.
 
 Your tiles should all have the same size, otherwise there will be gaps between your tiles or they would overlay each other.
+
+In this example I have mapped the strings A1 to A4 to 4 different blue floor tiles.
 
 ![Alt text](Screenshots/Screenshot1.png?raw=true)
 
