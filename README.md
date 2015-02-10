@@ -8,7 +8,7 @@ An alias is a 2-character string that gets mapped to a prefab. Right now it has 
 Just apply the TilesCreator.cs script to any Gameobject in your scene.
 Then just add all your floor tiles to the tiles section and provide aliases for them in the aliases section.
 
-Your tiles should all have the same size, otherwise there will be gaps between your tiles or they would overlay each other.
+Your tiles should all have the same size, otherwise there will be gaps between your tiles or they would overlap.
 
 In this example I have mapped the strings A1 to A4 to 4 different blue floor tiles.
 
