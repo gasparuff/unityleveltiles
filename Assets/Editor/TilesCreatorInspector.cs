@@ -5,16 +5,12 @@ using UnityEngine;
 public class TilesCreatorInspector : Editor {
 
 
-	// Will every second row be shifted?
-	public bool shiftedRows;
-
 	public override void OnInspectorGUI () {
 		serializedObject.Update();
 
 		//Painting the GUI
 		EditorList.Show(serializedObject.FindProperty("tiles"), EditorListOption.ListLabel | EditorListOption.Buttons);
 		EditorList.Show(serializedObject.FindProperty("aliases"), EditorListOption.ListLabel | EditorListOption.Buttons);
-		shiftedRows = EditorGUILayout.Toggle ("Row shift", shiftedRows);
 		EditorGUILayout.PropertyField (serializedObject.FindProperty ("levelInput"));
 
 		//Here's where all the magic happens
@@ -38,23 +34,28 @@ public class TilesCreatorInspector : Editor {
 			//Prepare rowcounter
 			int rowsAdded = 0;
 
+			bool lastRowShifted = false;
+			bool shiftCurrentRow = false;
+
 			//Loop over every single row
 			foreach(string row in rows){
 
 				//Get all characters of current row
 				char[] chars = row.ToCharArray();
 
-				//Shift those rows if requested
-				if(shiftedRows){
-					if(rowsAdded%2!=0){
-						firstpos.x += sizeOfFirstTile.x/4;
-					}else{
-						firstpos.x -= sizeOfFirstTile.x/4;
-					}
+				float shift = 0.0f;
+
+				int loopStart = 0;
+
+				string firstChar = ""+chars[0];
+
+				if(firstChar=="-"){
+					shift = sizeOfFirstTile.x/2;
+					loopStart = 1;
 				}
 
 				//Loop over every tuple
-				for(int i=0; i<chars.Length; i=i+2){
+				for(int i=loopStart; i<chars.Length; i=i+2){
 
 
 					//Get the Array Index of the current tuple
@@ -65,6 +66,11 @@ public class TilesCreatorInspector : Editor {
 					if(index!=-1){
 						//Instantiate tile 
 						GameObject instantiated = (GameObject) PrefabUtility.InstantiatePrefab(tc.tiles[index]);
+
+						if(shift>0f){
+							firstpos.x += shift;
+							shift = 0.0f;
+						}
 
 						//Move into position
 						instantiated.transform.position = firstpos;
