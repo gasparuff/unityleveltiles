@@ -32,7 +32,5 @@ Hit the "Build Object" button and watch it happen.
 ![Alt text](Screenshots/Screenshot2.png?raw=true)
 
 
+ [![IMAGE ALT TEXT HERE](http://img.youtube.com/vi/JQKZKk2Spvg/0.jpg)](http://www.youtube.com/watch?v=JQKZKk2Spvg)
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/JQKZKk2Spvg" frameborder="0" allowfullscreen></iframe>
-
- 
