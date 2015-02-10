@@ -16,7 +16,6 @@ public class TilesCreatorInspector : Editor {
 		//Painting the GUI
 		EditorList.Show(serializedObject.FindProperty("tiles"), EditorListOption.ListLabel | EditorListOption.Buttons);
 		EditorList.Show(serializedObject.FindProperty("aliases"), EditorListOption.ListLabel | EditorListOption.Buttons);
-//		EditorList.Show(serializedObject.FindProperty("teleporters"), EditorListOption.ListLabel | EditorListOption.Buttons);
 		EditorGUILayout.PropertyField (serializedObject.FindProperty ("teleporter"));
 		EditorGUILayout.PropertyField (serializedObject.FindProperty ("target"));
 		tc.teleporterTag = EditorGUILayout.TextField("Teleporter Tag", tc.teleporterTag);
@@ -99,39 +98,16 @@ public class TilesCreatorInspector : Editor {
 						}else if(val==tc.teleporterTag){
 							teleportPositionArrayholder.Add(firstpos);
 						}
-
-
-//						GameObject go = getGameObjectFor(teleporterTag);
-//						if(go!=null){
-//							go.transform.position = firstpos;
-//							go.transform.parent = tc.transform;
-//						}
+					
 					}
 
 					//Move the "cursor" ahead
 					firstpos.x += sizeOfFirstTile.x;
 				}
 
-//				teleportPositionArrayholder = getGameObjectAndPosition(teleportPositionArrayholder, teleporterTag);
-//				targetPositionArrayholder = getGameObjectAndPosition(targetPositionArrayholder, teleporterTag);
-
 				getGameObjectAndPosition (ref teleportPositionArrayholder, tc.teleporterTag);
 				getGameObjectAndPosition (ref targetPositionArrayholder, tc.targetTag);
-				//				
-//				if(targetPositionArrayholder.Count==4){
-//					Vector3 calculatedPosition = Vector3.zero;
-//					
-//					foreach(Vector3 pos in targetPositionArrayholder){
-//						calculatedPosition += pos;
-//					}
-//					calculatedPosition = calculatedPosition / targetPositionArrayholder.Count;
-//					GameObject go = getGameObjectFor(targetTag);
-//					if(go!=null){
-//						go.transform.position = calculatedPosition;
-//						go.transform.parent = tc.transform;
-//					}
-//					targetPositionArrayholder = new ArrayList();
-//				}
+
 				
 				//Move the "cursor" to the beginning of the next row
 				firstpos.z -= sizeOfFirstTile.z;
