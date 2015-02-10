@@ -84,7 +84,7 @@ public class TilesCreatorInspector : Editor {
 				}
 
 				//Move the "cursor" to the beginning of the next row
-				firstpos.z += sizeOfFirstTile.z;
+				firstpos.z -= sizeOfFirstTile.z;
 				firstpos.x = 0.0f;
 				rowsAdded++;
 			}
